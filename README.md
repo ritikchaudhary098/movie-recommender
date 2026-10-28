@@ -1,73 +1,57 @@
+# 🎬 Movie Recommendation System
 
-# Movie Recommendation System
+A hybrid movie recommendation system built using Python, Machine Learning, and Generative AI. It recommends movies based on genres, tags, and user rating patterns, with AI-generated explanations powered by the Groq API.
 
-A content-based movie recommendation system built using
-Python, Pandas, Scikit-learn, and Streamlit.
+## 🚀 Features
 
-## Features
+- 🎥 Content-Based Filtering using TF-IDF and cosine similarity
+- 👥 Collaborative Filtering using user–movie rating patterns
+- 🔀 Hybrid Recommendation Engine combining both approaches
+- 🤖 AI-generated recommendation explanations using Groq LLM
+- 📊 Interactive movie analytics dashboard using Streamlit
+- ⭐ Movie ratings and rating-count analysis
+- 🧪 Automated tests for recommendation functionality
 
-- Search and select a movie.
-- Recommend similar movies based on genres and tags.
-- Calculate similarity using TF-IDF and cosine similarity.
-- Display average ratings and rating counts.
-- Interactive web interface using Streamlit.
+## 🛠️ Tech Stack
 
-## Technologies
+- **Language:** Python
+- **Data Processing:** Pandas, NumPy
+- **Machine Learning:** Scikit-learn
+- **Sparse Matrices:** SciPy
+- **Web Application:** Streamlit
+- **Visualizations:** Plotly
+- **Generative AI:** Groq API
+- **Environment Management:** python-dotenv
+- **Package Manager:** uv
+- **Version Control:** Git and GitHub
 
-- Python
-- Pandas
-- Scikit-learn
-- TF-IDF
-- Cosine Similarity
-- Streamlit
-- uv
+## 🧠 How It Works
 
-## Dataset
+### 1. Data Preprocessing
+- Loads movie, rating, and tag datasets from CSV files.
+- Handles missing values and duplicate records.
+- Calculates average movie ratings and rating counts.
+- Combines movie genres and tags into text features.
 
-This project uses MovieLens Latest Small from GroupLens.
+### 2. Content-Based Filtering
+- Uses movie genres and tags to identify similar movies.
+- Converts text features into numerical vectors using `TfidfVectorizer`.
+- Calculates similarity using cosine similarity.
+- Recommends movies with similar characteristics.
 
-Download:
-https://grouplens.org/datasets/movielens/latest/
+### 3. Collaborative Filtering
+- Builds a user–movie rating matrix.
+- Represents movies using user-rating patterns.
+- Uses cosine similarity to identify movies with similar rating patterns.
+- Recommends movies based on relationships in user ratings.
 
-Copy movies.csv, ratings.csv, and tags.csv into:
+### 4. Hybrid Recommendation Engine
 
-data/raw/
+Combines content-based and collaborative similarity scores into a single ranking.
 
-The links.csv file is included in the dataset but is not
-required by the current recommendation model.
+**Hybrid Score:**
 
-## Installation
-
-Install uv if it is not already installed.
-
-Create the environment and install the dependencies:
-
-```bash
-uv sync
-```
-
-## Run the website
-
-```bash
-uv run streamlit run app.py
-```
-
-## Test the recommendation model
-
-```bash
-uv run python test_recommender.py
-```
-
-## How it works
-
-The system combines movie genres and user-generated tags.
-TF-IDF converts the combined text into numerical features.
-Cosine similarity ranks movies by how similar their features are.
-
-## Future improvements
-
-- Collaborative filtering.
-- Hybrid recommendations.
-- Recommendation quality evaluation.
-- Movie posters and improved interface.
-- Online deployment.
+```text
+Hybrid Score = 0.4 × Content Score
+             + 0.6 × Collaborative Score
+             + Rating Bonus
